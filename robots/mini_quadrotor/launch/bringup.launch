@@ -3,8 +3,10 @@
   ###########  launch config  ###########
   <arg name="rm" default="True" />
   <arg name="sim" default="False" />
+  <arg name="lqi_ctrl" default="True" />
   <arg name="real_machine" default="$(arg rm)" />
   <arg name="simulation" default="$(arg sim)" />
+  <arg name="lqi_control_method" default="$(arg lqi_ctrl)" />
   <arg name="type" default="quad" />
   <arg name="estimate_mode"  default= "0" />
   <arg name="sim_estimate_mode"  default= "2" />
@@ -41,7 +43,8 @@
     <rosparam file="$(arg config_dir)/Battery.yaml" command="load" />
 
     ###########  Control  ###########
-    <rosparam file="$(arg config_dir)/FlightControl.yaml" command="load" />
+    <rosparam file="$(arg config_dir)/LQIFlightControl.yaml" command="load" if="$(arg lqi_control_method)" />
+    <rosparam file="$(arg config_dir)/QinvFlightControl.yaml" command="load" unless="$(arg lqi_control_method)"/>
 
     ###########  Sensor Fusion  ###########
     <rosparam file="$(arg config_dir)/StateEstimation.yaml" command="load" />
