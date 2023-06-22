@@ -55,7 +55,7 @@ namespace aerial_robot_control
     rosParamInit();
 
     q_mat_.resize(4, motor_num_);
-    q_mat_.resize(motor_num_, 4);
+    q_mat_inv_.resize(motor_num_, 4);
     target_base_thrust_.resize(motor_num_);
 
     pid_msg_.z.total.resize(motor_num_);
@@ -89,8 +89,8 @@ namespace aerial_robot_control
       q_mat_(0, i) = rotors_normal.at(i).z() * uav_mass_inv;
       q_mat_.block(1, i, 3, 1) = inertia_inv * (rotors_origin.at(i).cross(rotors_normal.at(i)) + m_f_rate * rotor_direction.at(i + 1) * rotors_normal.at(i));
     }
-    q_mat_inv_ = aerial_robot_model::pseudoinverse(q_mat_);
 
+    q_mat_inv_ = aerial_robot_model::pseudoinverse(q_mat_);
 
     tf::Vector3 target_acc_w(pid_controllers_.at(X).result(),
                              pid_controllers_.at(Y).result(),
