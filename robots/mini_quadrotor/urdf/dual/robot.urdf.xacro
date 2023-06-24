@@ -50,7 +50,7 @@
       <limit effort="100.0" lower="${min_force}" upper="${max_force}" velocity="0.5"/>
       <parent link="${par_link}"/>
       <child link="thrust${id}"/>
-      <origin rpy="${tilt} 0 ${-1 * direction * pi/4}" xyz="${x} ${y} ${z}"/>
+      <origin rpy="${tilt} 0 ${direction * pi/4}" xyz="${x} ${y} ${z}"/>
       <axis xyz="0 0 ${direction}"/>
     </joint>
 
@@ -243,14 +243,14 @@
   <!-- </xacro:extra_module> -->
 
   <!-- propellers -->
-  <xacro:propeller_module id = "1" x = "${-rotor_x}" y = "${-rotor_y}" z = "${rotor_z}" direction = "-1" tilt = "${-rotor_tilt}" par_link = "main_body1"/>
-  <xacro:propeller_module id = "2" x = "${rotor_x}" y = "${-rotor_y}" z = "${rotor_z}" direction = "1" tilt = "${-rotor_tilt}" par_link = "main_body1"/>
-  <xacro:propeller_module id = "3" x = "${rotor_x}" y = "${rotor_y}" z = "${rotor_z}" direction = "-1" tilt = "${rotor_tilt}" par_link = "main_body1"/>
-  <xacro:propeller_module id = "4" x = "${-rotor_x}" y = "${rotor_y}" z = "${rotor_z}"  direction = "1" tilt = "${rotor_tilt}" par_link = "main_body1"/>
-  <xacro:propeller_module id = "5" x = "${-rotor_x}" y = "${-rotor_y}" z = "${rotor_z}" direction = "-1" tilt = "${-rotor_tilt}" par_link = "main_body2"/>
-  <xacro:propeller_module id = "6" x = "${rotor_x}" y = "${-rotor_y}" z = "${rotor_z}" direction = "1" tilt = "${-rotor_tilt}" par_link = "main_body2"/>
-  <xacro:propeller_module id = "7" x = "${rotor_x}" y = "${rotor_y}" z = "${rotor_z}" direction = "-1" tilt = "${rotor_tilt}" par_link = "main_body2"/>
-  <xacro:propeller_module id = "8" x = "${-rotor_x}" y = "${rotor_y}" z = "${rotor_z}"  direction = "1" tilt = "${rotor_tilt}" par_link = "main_body2"/>
+  <xacro:propeller_module id = "1" x = "${-rotor_x}" y = "${-rotor_y}" z = "${rotor_z}" direction = "1" tilt = "${-rotor_tilt}" par_link = "main_body1"/>
+  <xacro:propeller_module id = "2" x = "${rotor_x}" y = "${-rotor_y}" z = "${rotor_z}" direction = "-1" tilt = "${-rotor_tilt}" par_link = "main_body1"/>
+  <xacro:propeller_module id = "3" x = "${rotor_x}" y = "${rotor_y}" z = "${rotor_z}" direction = "1" tilt = "${rotor_tilt}" par_link = "main_body1"/>
+  <xacro:propeller_module id = "4" x = "${-rotor_x}" y = "${rotor_y}" z = "${rotor_z}"  direction = "-1" tilt = "${rotor_tilt}" par_link = "main_body1"/>
+  <xacro:propeller_module id = "5" x = "${-rotor_x}" y = "${-rotor_y}" z = "${rotor_z}" direction = "1" tilt = "${-rotor_tilt}" par_link = "main_body2"/>
+  <xacro:propeller_module id = "6" x = "${rotor_x}" y = "${-rotor_y}" z = "${rotor_z}" direction = "-1" tilt = "${-rotor_tilt}" par_link = "main_body2"/>
+  <xacro:propeller_module id = "7" x = "${rotor_x}" y = "${rotor_y}" z = "${rotor_z}" direction = "1" tilt = "${rotor_tilt}" par_link = "main_body2"/>
+  <xacro:propeller_module id = "8" x = "${-rotor_x}" y = "${rotor_y}" z = "${rotor_z}"  direction = "-1" tilt = "${rotor_tilt}" par_link = "main_body2"/>
 
 
 </robot>
