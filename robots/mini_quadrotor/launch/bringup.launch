@@ -9,7 +9,7 @@
   <arg name="simulation" default="$(arg sim)" />
   <arg name="lqi_control_method" default="$(arg lqi_ctrl)" />
   <arg name="type" default="quad" />
-  <arg name="estimate_mode"  default= "0" />
+  <arg name="estimate_mode"  default= "1" />
   <arg name="sim_estimate_mode"  default= "2" />
   <arg name="headless" default="True" />
   <arg name="worldtype" default="$(find aerial_robot_simulation)/gazebo_model/world/empty.world" />
@@ -80,6 +80,7 @@
     <arg name="real_machine" value="$(arg real_machine)" />
     <arg name="simulation" value="$(arg simulation)" />
     <arg name="robot_ns" value="$(arg robot_ns)" />
+    <arg name="robot_id" value="$(arg robot_id)" />
   </include >
 
   ########## Simulation in Gazebo #########
