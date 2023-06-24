@@ -80,6 +80,7 @@ namespace aerial_robot_control
     virtual void rosParamInit();
     virtual void controlCore() override;
     virtual void sendCmd() override;
+    virtual void cfgPidCallback(aerial_robot_control::PIDConfig &config, uint32_t level, std::vector<int> controller_indices) override;
     virtual void sendFourAxisCommand();
     virtual void sendTorqueAllocationMatrixInv();
 

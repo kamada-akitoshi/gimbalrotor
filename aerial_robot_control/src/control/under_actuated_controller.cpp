@@ -146,6 +146,12 @@ namespace aerial_robot_control
     sendTorqueAllocationMatrixInv();
   }
 
+  void UnderActuatedController::cfgPidCallback(aerial_robot_control::PIDConfig &config, uint32_t level, std::vector<int> controller_indices)
+  {
+    PoseLinearController::cfgPidCallback(config, level, controller_indices);
+    setAttitudeGains();
+  }
+
   void UnderActuatedController::sendFourAxisCommand()
   {
     spinal::FourAxisCommand flight_command_data;
