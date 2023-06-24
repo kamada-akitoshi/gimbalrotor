@@ -109,12 +109,12 @@
   <!-- main_body1 -->
   <link name="main_body1">
     <inertial>
-      <mass value = "0.546" />
+          <mass value = "0.509" />
       <origin xyz="0 0 0.012" rpy="0 0 0"/>
       <inertia
-          ixx="0.0045" ixy="0" ixz="0"
-          iyy="0.0045" iyz="0"
-          izz="0.0082"/>
+          ixx="0.0038" ixy="0.0000043" ixz="0.0000086"
+          iyy="0.0042" iyz="-0.0000053"
+          izz="0.0072"/>
     </inertial>
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -150,22 +150,25 @@
       </visual>
   </link>
 
-  <joint name="flex_joint1" type="fixed">
+  <joint name="flex_joint1" type="revolute">
+  <!-- <joint name="flex_joint1" type="fixed"> -->
     <parent link="main_body1"/>
     <child link="flex_link"/>
     <origin rpy="0 0 0" xyz="0 0 ${-flex_joint_offset_z}"/>
     <axis xyz="1 0 0"/>
+    <limit effort="0.001" lower="${-pi/2}" upper="${pi/2}" velocity="1"/>
+    <dynamics damping="0.1" friction="0.0"/>
   </joint>
 
   <!-- main_body2 -->
   <link name="main_body2">
     <inertial>
-      <mass value = "0.546" />
+          <mass value = "0.509" />
       <origin xyz="0 0 0.012" rpy="0 0 0"/>
       <inertia
-          ixx="0.0045" ixy="0" ixz="0"
-          iyy="0.0045" iyz="0"
-          izz="0.0082"/>
+          ixx="0.0038" ixy="0.0000043" ixz="0.0000086"
+          iyy="0.0042" iyz="-0.0000053"
+          izz="0.0072"/>
     </inertial>
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
