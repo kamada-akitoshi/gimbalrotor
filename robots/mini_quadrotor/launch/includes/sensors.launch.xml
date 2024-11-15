@@ -4,7 +4,6 @@
   <arg name="real_machine" default="false" />
   <arg name="simulation" default="false" />
   <arg name="robot_ns" default="quadrotor" />
-  <arg name="robot_id" default="1" />
 
   <group ns="$(arg robot_ns)">
     <group if="$(arg real_machine)">
@@ -16,24 +15,21 @@
         </include>
 
         <!-- mocap -->
-        <include file="$(find aerial_robot_base)/launch/external_module/mocap.launch">
-          <arg name="robot_id" value="$(arg robot_id)" />
+        <include file="$(find aerial_robot_base)/launch/external_module/mocap.launch" />
+
+        <!-- livox mid360 & fast lio -->
+        <include file="$(find livox_ros_driver2)/launch_ROS1/msg_MID360.launch" />
+        <include file="$(find fast_lio)/launch/mapping_mid360.launch" >
+          <arg name="rviz" value="false" />
         </include>
 
-        <!-- m5stack -->
-        <!-- <node pkg="rosserial_python" type="serial_node.py" name="m5stack_ros_node" output="screen" >
-          <param name="port" value="/dev/m5stack_atom"/>
-        </node> -->
-
-        <!-- realsense t265 -->
-        <!-- <include file="$(find realsense2_camera)/launch/rs_t265.launch" /> -->
-	
       </group>
     </group>
 
     <!-- basic configuration for sensors (e.g. noise sigma) -->
-    <rosparam file="$(find hydrus)/config/sensors/imu/spinal.yaml" command="load" />
+    <rosparam file="$(find aerial_robot_base)/config/sensors/imu/spinal.yaml" command="load" />
     <rosparam file="$(find aerial_robot_base)/config/sensors/mocap.yaml" command="load" />
-    <rosparam file="$(find hydrus)/config/sensors/vo/realsense_t265.yaml" command="load" />
+    <rosparam file="$(find aerial_robot_base)/config/sensors/lio/livox_mid360.yaml" command="load" />
   </group>
+
 </launch>

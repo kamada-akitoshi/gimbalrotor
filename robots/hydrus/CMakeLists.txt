@@ -1,13 +1,14 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(hydrus)
 
-add_compile_options(-std=c++14)
+add_compile_options(-std=c++17)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   aerial_robot_msgs
   aerial_robot_control
   aerial_robot_model
+  mujoco_ros_control
   spinal
   eigen_conversions
   tf_conversions
@@ -86,6 +87,9 @@ install(DIRECTORY bin
   USE_SOURCE_PERMISSIONS
 )
 
+mujoco_model_convert(
+  ${PROJECT_SOURCE_DIR}
+  ${PROJECT_SOURCE_DIR}/config/mujoco_model.yaml)
 
 if(CATKIN_ENABLE_TESTING)
   find_package(rostest REQUIRED)
